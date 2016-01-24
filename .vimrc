@@ -17,4 +17,14 @@ map <F2> :!java %<<cr>
 map <F6> :!python %<cr>
 
 map <F8> :!ghc -o %< %<cr>
-
+map <F2> :call SetTitle()<CR>
+func SetTitle()
+	let l = 0
+	let l = l + 1 | call setline(l, '#include <bits/stdc++.h>')
+	let l = l + 1 | call setline(l, 'using namespace std ;')
+	let l = l + 1 | call setline(l, 'typedef long long ll ;')
+	let l = l + 1 | call setline(l, '#define F first')
+	let l = l + 1 | call setline(l, '#define S second')
+	let l = l + 1 | call setline(l, '#define lson (o<<1),l,mid')
+	let l = l + 1 | call setline(l, '#define rson (o<<1|1),mid+1,r')
+endfunc
