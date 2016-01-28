@@ -3,7 +3,7 @@ filetype indent plugin on
 set nu
 set tabstop=4
 set shiftwidth=4
-colo evening
+colo morning
 set cin
 
 map <F4> :!g++ -std=c++11 -O2 % -o %<<cr>
@@ -27,4 +27,6 @@ func SetTitle()
 	let l = l + 1 | call setline(l, '#define S second')
 	let l = l + 1 | call setline(l, '#define lson (o<<1),l,mid')
 	let l = l + 1 | call setline(l, '#define rson (o<<1|1),mid+1,r')
+	let l = l + 1 | call setline(l, 'const int inf = 0x3f3f3f3f')
+	let l = l + 1 | call setline(l, 'const ll INF = (ll)1e18')
 endfunc
