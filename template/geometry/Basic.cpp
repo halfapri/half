@@ -35,10 +35,10 @@ double operator * (const Point &a , const Point &b) {
 double dotji(const Point &a , const Point &b) {
 	return a.x * b.x + a.y * b.y ;
 }
-bool cmp1 (const Point &a , const Point &b) {//polar angle sort(interger)
+bool cmp1 (const Point &a , const Point &b) {//polar angle sort
 	return a.dim()==b.dim()?a*b>0 : a.dim()>b.dim() ;
 }
-bool cmp2 (const Point &a , const Point &b) {//ploar angle sort(double)
+bool cmp2 (const Point &a , const Point &b) {//ploar angle sort
 	return sign(atan2(a.y,a.x)-atan2(b.y,b.x)) < 0 ;
 }
 double dist (const Point &a , const Point &b) {
@@ -47,6 +47,11 @@ double dist (const Point &a , const Point &b) {
 double dist2 (const Point &a , const Point &b) {
 	return (a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y) ;
 }
+bool collinear (const Point &a , const Point &b) {
+	return a*b?0:dotji(a,b)>0 ;
+}//0:不共线；1:同向共线；-1:反向共线
+
+
 double point_to_seg (const Point &a , const Point &b , const Point &dot) {
 	if (dotji(dot-a,b-a)<0 || dotji(dot-b,a-b)<0) return min (dist(dot,a),dist(dot,b)) ;
 	return fabs((a-dot)*(b-dot)) / dist(a,b) ;
