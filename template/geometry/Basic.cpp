@@ -19,6 +19,7 @@ const ll INF = (ll)1e18 ;
 int sign(double x) {return x < -eps ? -1 : x > eps ;}
 struct Point {
 	double x , y ;
+	Point () {}
 	Point(const double &x , const double &y) : x(x) , y(y) {} 
 
 	bool dim() const {return x < 0 || x == 0 && y < 0 ;}
