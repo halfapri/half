@@ -47,7 +47,7 @@ double dist (const Point &a , const Point &b) {
 double dist2 (const Point &a , const Point &b) {
 	return (a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y) ;
 }
-bool collinear (const Point &a , const Point &b) {
+int collinear (const Point &a , const Point &b) {
 	return a*b?0:dotji(a,b)>0 ;
 }//0:不共线；1:同向共线；-1:反向共线
 
