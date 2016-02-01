@@ -56,9 +56,7 @@ ll modulus2 (const Point &a) {
 	return a.x*a.x+a.y*a.y ;
 }
 int collinear (const Point &a , const Point &b) {
-	//return a*b?0:(dotji(a,b)>0?1:-1) ;
-	return !cmp1(a,b) && !cmp1(b,a) ;
-
+	return a*b?0:(dotji(a,b)>0?1:-1) ;
 }//0:不共线；1:同向共线；-1:反向共线
 
 
