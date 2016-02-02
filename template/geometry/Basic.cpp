@@ -66,7 +66,7 @@ double point_to_seg (const Point &a , const Point &b , const Point &dot) {
 }//dot到线段ab的最短距离
 int two_poles(Point a , Point b , int pole_a , int pole_b , int tot) {
 	if (collinear(a,b)) return -1 ;
+	if (!cmp1(a,b)) swap(a,b) , swap(pole_a,pole_b) ;
 	return a*b>0?abs(pole_a-pole_b)-1:tot-abs(pole_a-pole_b)-1;
 }//两个极之间形成的劣角间有几个极(为平角/0度角返回-1) , 使用前预处理出每个点属于那个极pole[M](0-based),tot为总极数
-
 
