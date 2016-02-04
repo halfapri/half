@@ -25,37 +25,37 @@ struct Point {
 
 	bool dim() const {return x < 0 || x == 0 && y < 0 ;}
 } ;
-Point operator + (const Point &a , const Point &b) {
+inline Point operator + (const Point &a , const Point &b) {
 	return Point(a.x + b.x , a.y + b.y) ;
 }
-Point operator - (const Point &a , const Point &b) {
+inline Point operator - (const Point &a , const Point &b) {
 	return Point(a.x - b.x , a.y - b.y) ;
 }
-ll operator * (const Point &a , const Point &b) {
+inline ll operator * (const Point &a , const Point &b) {
 	return a.x * b.y - a.y * b.x ;
 }
-ll dotji(const Point &a , const Point &b) {
+inline ll dotji(const Point &a , const Point &b) {
 	return a.x * b.x + a.y * b.y ;
 }
-bool cmp1 (const Point &a , const Point &b) {//polar angle sort
+inline bool cmp1 (const Point &a , const Point &b) {//polar angle sort
 	return a.dim()==b.dim()?a*b>0 : a.dim()>b.dim() ;
 }
-bool cmp2 (const Point &a , const Point &b) {//polar angle sort
+inline bool cmp2 (const Point &a , const Point &b) {//polar angle sort
 	return sign(atan2(a.y,a.x)-atan2(b.y,b.x)) < 0 ;
 }
-double dist (const Point &a , const Point &b) {
+inline double dist (const Point &a , const Point &b) {
 	return sqrt((a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y)) ;
 }
-ll dist2 (const Point &a , const Point &b) {
+inline ll dist2 (const Point &a , const Point &b) {
 	return (a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y) ;
 }
-double modulus (const Point &a) {
+inline double modulus (const Point &a) {
 	return sqrt(a.x*a.x+a.y*a.y) ;
 }
-ll modulus2 (const Point &a) {
+inline ll modulus2 (const Point &a) {
 	return a.x*a.x+a.y*a.y ;
 }
-int collinear (const Point &a , const Point &b) {
+inline int collinear (const Point &a , const Point &b) {
 	return a*b?0:(dotji(a,b)>0?1:-1) ;
 }//0:不共线；1:同向共线；-1:反向共线
 
@@ -70,3 +70,6 @@ int two_poles(Point a , Point b , int pole_a , int pole_b , int tot) {
 	return a*b>0?abs(pole_a-pole_b)-1:tot-abs(pole_a-pole_b)-1;
 }//两个极之间形成的劣角间有几个极(为平角/0度角返回-1) , 使用前预处理出每个点属于那个极pole[M](0-based),tot为总极数
 
+int main () {
+	return 0 ;
+}
