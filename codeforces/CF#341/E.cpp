@@ -19,7 +19,6 @@ const ll INF = (ll)1e18 ;
 const int MOD = (int)(1e9+7) ;
 int cnt[20] ;
 int n , b , k , x ;
-
 struct Matrix {
 	int n ;
 	int mat[201][201] ; 
