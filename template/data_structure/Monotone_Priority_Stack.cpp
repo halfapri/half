@@ -6,6 +6,8 @@
 using namespace std;
 const int M = 1e5 + 7 ;
 int L[M] , R[M] ;
+int n ;
+int a[M] ;
 
 void L_wall () {
 	stack<int> wall ;
@@ -14,7 +16,7 @@ void L_wall () {
 	for (int i = 2 ; i <= n ; i ++) {
 		if (a[wall.top()] < a[i]) L[i] = wall.top()+1 ; 
 		else {
-			while (!wall.empty() || a[wall.top()] >= a[i]) wall.pop () ; 
+			while (!wall.empty() && a[wall.top()] >= a[i]) wall.pop () ; 
 			if (!wall.empty ()) L[i] = 1 ;
 			else L[i] = wall.top () + 1 ;
 		}
@@ -29,10 +31,17 @@ void R_wall () {
 	for (int i = n-1 ; i >= 1 ; i --) {
 		if (a[wall.top()] <= a[i]) R[i] = wall.top()-1 ; 
 		else {
-			while (!wall.empty() || a[wall.top()] > a[i]) wall.pop () ;
+			while (!wall.empty() && a[wall.top()] > a[i]) wall.pop () ;
 			if (!wall.empty ()) R[i] = n ;
 			else R[i] = wall.top()-1 ;
 		}
 		wall.push (i) ;
 	}
+}
+
+int main () {
+	scanf ("%d" , &n) ;
+	for (int i = 1 ; i <= n ; i ++) 
+		scanf ("%d" , &a[i]) ;
+	return 0 ;
 }
