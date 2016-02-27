@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include<algorithm>
+#include<string.h>
+using namespace std ;
+typedef long long ll ;
+typedef long double ld ;
+typedef unsigned long long ull ;
+#ifdef _WIN32
+#define LLD "%I64d"
+#else
+#define LLD "%lld"
+#endif
+#define pi (acos(-1.0))
+#define F first
+#define S second
+#define lson (o<<1),l,mid
+#define rson (o<<1|1),mid+1,r
+#define MP make_pair
+const double eps = 1e-9 ;
+const int inf = 0x3f3f3f3f ;
+const ll INF = (ll)1e18 ;
+
+const int M = 1000000+10 ;
+char s[M] ;
+int nxt[M] ;
+int lens ;
+
+void get_nxt () {
+	lens = strlen (s) ;
+	nxt[0] = -1 ;
+	for (int i=1 ,j=-1 ; i<lens ; i ++) {
+		while(j!=-1 && s[i]!=s[j+1]) j=nxt[j] ;
+		nxt[i] = s[i]==s[j+1]?++j:-1 ;
+	}
+}
+
+int cnt = 0 ;
+int key[M] ;
+
+int main () {
+	int T ;
+	scanf ("%d" , &T) ;
+	for (int cas=1 ; cas<=T ; cas ++) {
+		scanf ("%s" , s) ;
+		get_nxt () ;
+		cnt = 0 ;
+		int i = nxt[lens-1] ;
+		while (i!=-1) {
+			key[cnt ++] = lens-1-i ;
+			i = nxt[i] ;
+		}
+		if (key[cnt-1]!=lens)
+			key[cnt ++] = lens ;
+		printf ("Case #%d: %d\n" , cas , cnt) ;
+		for (int i = 0 ; i < cnt ; i ++) {
+			printf ("%d%c" , key[i] , " \n"[i==cnt-1]) ;
+		}
+	}
+	return 0 ;
+}
