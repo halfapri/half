@@ -5,7 +5,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 const int M = 1e5 + 7 ;
-int L[i] , R[i] ;
+int L[M] , R[M] ;
 
 void L_wall () {
 	stack<int> wall ;
