@@ -18,9 +18,14 @@ const double eps = 1e-9 ;
 const int inf = 0x3f3f3f3f ;
 const ll INF = (ll)4e18 ;
 
+const int M = 1010*50 ;
+int n ;
+char s[2000000+10] ;
+int cnt[1001] ;
+char t[1001][55] ;
 struct Trie {
-#define M (500000+10)
-	int go[M][26] , fail[M] , end[M] ;
+	int go[M][26] , fail[M] ;
+	int end[M] ;
 	int o , root ;
 
 	void init () {
@@ -31,18 +36,18 @@ struct Trie {
 	int newNode () {
 		for (int i=0 ; i<26 ; i++)
 			go[o][i] = -1 ;
-		end[o] = false ;
+		end[0] = 0 ;
 		return o ++ ;
 	}
 
-	void Insert (char *s) {
+	void Insert (char *s , int id) {
 		int now = root ;
 		for (; *s ; s ++) {
-			if (go[now][*s-'a']==-1)  
-				go[now][*s-'a'] = newNode () ;
-			now = go[now][*s-'a'] ;
+			if (go[now][*s-'A']==-1)
+				go[now][*s-'A'] = newNode() ;
+			now=go[now][*s-'A'] ;
 		}
-		end[now] ++ ;
+		end[now] = id ;
 	}
 
 	void get_fail () {
@@ -55,12 +60,12 @@ struct Trie {
 				q.push (go[root][i]) ;
 			}
 		}
-		while (!q.empty ()) {
-			int now=q.front() ; q.pop() ;
+		while (!q.empty()) {
+			int now=q.front() ; q.pop () ;
 			for (int i=0 ; i<26 ; i++) {
-				if (go[now][i] == -1) 
+				if (go[now][i]==-1)
 					go[now][i] = go[fail[now]][i] ;
-				else { 
+				else {
 					fail[go[now][i]] = go[fail[now]][i] ;
 					q.push (go[now][i]) ;
 				}
@@ -68,37 +73,37 @@ struct Trie {
 		}
 	}
 
-	int search (char *s) {
-		int cnt = 0 ;
-		int now = root ;
-		for (; *s ; s ++) {
-			now = go[now][*s-'a'] ;
-			int tmp = now ;
-			while (tmp != root) {
-				cnt += end[tmp] ;
-				end[tmp] = 0 ;
-				tmp = fail[tmp] ;
+	void search (char *s) {
+		int now=root ;
+		for (; *s ; s++) {
+			now=go[now][*s-'A'] ;
+			int tmp=now ;
+			while (tmp!=root) {
+				if (end[tmp])
+					cnt[end[tmp]] ++ ;
+				tmp=fail[tmp] ;
 			}
 		}
-		return cnt ;
 	}
-} ac ;
-char s[1000000+10] ;
-int n ;
+} ac;
 
 int main () {
-	int T ;
-	scanf ("%d" , &T) ;
-	while (T --) {
+	while (~ scanf ("%d" , &n)) {
+		memset (cnt , 0 , sizeof(cnt)) ;
 		ac.init () ;
-		scanf ("%d" , &n) ;
-		for (int i = 0 ; i < n ; i ++) {
-			scanf ("%s" , s) ;
-			ac.Insert (s) ;
+
+		for (int i=0 ; i<n ; i ++) {
+			scanf ("%s" , t[i]) ;
+			ac.Insert (t[i] , i+1) ;
 		}
 		ac.get_fail () ;
+
 		scanf ("%s" , s) ;
-		printf ("%d\n" , ac.search (s)) ;
+		ac.search (s) ;
+		for (int i=0 ; i<n ; i++) {
+			if (cnt[i+1]==0) continue ;
+			printf ("%s: %d\n" , t[i] , cnt[i+1]) ;
+		}
 	}
 	return 0 ;
 }
