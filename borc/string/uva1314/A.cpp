@@ -31,7 +31,7 @@ int minway () {
 	while (i<lens && j<lens && k<lens) {
 		if (s[add(i+k)]==s[add(j+k)]) k ++ ;
 		else {
-			if (s[i+k]<s[j+k]) j+=k+1 ;
+			if (s[add(i+k)]<s[add(j+k)]) j+=k+1 ;
 			else i+=k+1 ;
 			if (i==j) j ++ ;
 			k = 0 ;
