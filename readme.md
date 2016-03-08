@@ -13,7 +13,7 @@
     
 _________________________________________
 友情链接：<br/>
-[仓鼠的博客](http://www.cnblogs.com/linyujun/),有的时候也会写得精彩.<br/>
+[仓鼠的博客](http://www.cnblogs.com/linyujun/),有的时候也会写得很精彩.<br/>
 [幻神的博客](http://home.cnblogs.com/u/zyf0163/),兴趣上来的时候会给手画题解.<br/>
 [包海的博客](http://www.cnblogs.com/Running-Time/),和时间赛跑写着博客的人.   
 [我的博客](http://www.cnblogs.com/get-an-AC-everyday/),犯病的时候会给出很详细的证明.   
