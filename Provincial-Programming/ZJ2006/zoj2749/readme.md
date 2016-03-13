@@ -15,7 +15,7 @@
 如果road(i,j)=1的话，并且不是在边界的话，就必须经过;<br>
 而在road(i,j)=0的话，一定不能经过。<br>
 然后dfs暴搜即可。<br>
-[1]:http://latex.codecogs.com/gif.latex?\2^{x-1}
+[1]:http://latex.codecogs.com/gif.latex?\2^{n-2}
 
 
 
