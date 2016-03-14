@@ -32,6 +32,7 @@ void manacher () {
 		t[lent ++] = s[i] ; 
 		t[lent ++] = '#' ;
 	}
+	t[lent] = '\0' ;
 
 	int mx = 0 , id = 0 ;
 	for (int i = 0 ; i < lens ; i ++) {
