@@ -19,6 +19,7 @@ _________________________________________
 [我的博客](http://www.cnblogs.com/get-an-AC-everyday/),犯病的时候会给出很详细的证明.   
 [很多数列](http://www.research.att.com/~njas/sequences/index.html)   
 [数学味道](http://projecteuler.net/)
+[oeis](https://oeis.org/)
 
 
 
