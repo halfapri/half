@@ -18,7 +18,7 @@ _________________________________________
 [包海的博客](http://www.cnblogs.com/Running-Time/),和时间赛跑写着博客的人.   
 [我的博客](http://www.cnblogs.com/get-an-AC-everyday/),犯病的时候会给出很详细的证明.   
 [很多数列](http://www.research.att.com/~njas/sequences/index.html)   
-[数学味道](http://projecteuler.net/)
+[数学味道](http://projecteuler.net/)<br>
 [oeis](https://oeis.org/)
 
 
