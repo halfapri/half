@@ -1,7 +1,7 @@
 #Fibonacciの规律
 >笔记摘录自：[从蓝桥杯来谈Fibonacci数列](http://blog.csdn.net/acdreamers/article/details/21822165)<br>
 
-##1.&nbsp;<img src="http://latex.codecogs.com/gif.latex? f(n) mod f(m)" />
+##1.&nbsp;<img src="http://latex.codecogs.com/gif.latex? f(n) mod &space;f(m)" />
 <img src="http://latex.codecogs.com/gif.latex?\ f(n+m)=f(n+1)f(m)+f(n)f(m-1)      ----(1)" /> <br>
 <img src="http://latex.codecogs.com/gif.latex?\ f(n)^{2}=(-1)^{n+1}+f(n-1)f(n+1)----(2)" /> <br>
 通过(1)易得：<br>
