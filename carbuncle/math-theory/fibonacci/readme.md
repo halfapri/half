@@ -46,7 +46,8 @@
 <br>
 ##2.<img src="http://latex.codecogs.com/gif.latex?\\sum_{i=1}^{n}f(i)=f(n&plus;2)-1" />
 把每一项展开成<img src="http://latex.codecogs.com/gif.latex?f(i)=f(i&plus;1)-f(i-1)" />即可得到<br>
-![](http://latex.codecogs.com/gif.latex?\\frac{\\partial J}{\\partial \\theta_k^{(j)}}=\\sum_{i:r(i,j)=1}{\\big((\\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\\big)x_k^{(i)}}+\\lambda \\xtheta_k^{(j)})
+<img src="http://latex.codecogs.com/gif.latex?\frac{\partial J}{\partial \theta_k^{(j)}}=\sum_{i:r(i,j)=1}{\big((\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\big)x_k^{(i)}}+\lambda \theta_k^{(j)}" />  
+
 
 
 
