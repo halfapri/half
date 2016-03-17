@@ -1,13 +1,13 @@
 #Fibonacciの规律
 >笔记摘录自：[从蓝桥杯来谈Fibonacci数列](http://blog.csdn.net/acdreamers/article/details/21822165)<br>
 
-##1.&nbsp;<img src="http://latex.codecogs.com/gif.latex? f(n) mod &space;f(m)" />
-<img src="http://latex.codecogs.com/gif.latex?\ f(n+m)=f(n+1)f(m)+f(n)f(m-1)      ----(1)" /> <br>
-<img src="http://latex.codecogs.com/gif.latex?\ f(n)^{2}=(-1)^{n+1}+f(n-1)f(n+1)----(2)" /> <br>
+##1.&nbsp;<img src="http://latex.codecogs.com/gif.latex? f(n) mod f(m)" />
+<img src="http://latex.codecogs.com/gif.latex? f(n+m)=f(n+1)f(m)+f(n)f(m-1)      ----(1)" /> <br>
+<img src="http://latex.codecogs.com/gif.latex? f(n)^{2}=(-1)^{n+1}+f(n-1)f(n+1)----(2)" /> <br>
 通过(1)易得：<br>
-<img src="http://latex.codecogs.com/gif.latex?\ f(n) mod \ f(m) =f(m-1)^{\frac{n}{m}}f(n \% m) mod \ f(m)----(3) " /> <br>
+<img src="http://latex.codecogs.com/gif.latex? f(n) mod  f(m) =f(m-1)^{\frac{n}{m}}f(n % m) mod  f(m)----(3) " /> <br>
 由(2)可以看出：<br>
-<img src="http://latex.codecogs.com/gif.latex?\ f(m-1)^{2}mod \ f(m)=(-1)^{m}" /><br>
+<img src="http://latex.codecogs.com/gif.latex? f(m-1)^{2}mod \ f(m)=(-1)^{m}" /><br>
 从而可以进一步简化(3),讨论:<br>
 <img src="http://latex.codecogs.com/gif.latex?\textcircled{1}" />当m为偶数 , <img src="http://latex.codecogs.com/gif.latex?\frac{n}{m}" />为偶数时：<br>
 <img src="http://latex.codecogs.com/gif.latex?\ f(n) mod \ f(m)=f(n \% m)" /><br>
