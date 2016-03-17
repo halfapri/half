@@ -5,7 +5,7 @@
 <img src="http://latex.codecogs.com/gif.latex? f(n+m)=f(n+1)f(m)+f(n)f(m-1)      ----(1)" /> <br>
 <img src="http://latex.codecogs.com/gif.latex? f(n)^{2}=(-1)^{n+1}+f(n-1)f(n+1)----(2)" /> <br>
 通过(1)易得：<br>
-<img src="http://latex.codecogs.com/gif.latex? f(n) mod  f(m) =f(m-1)^{\frac{n}{m}}f(n % m) mod  f(m)----(3) " /> <br>
+<img src="http://latex.codecogs.com/gif.latex? f(n) mod  f(m) =f(m-1)^{\frac{n}{m}}f(n \% m) mod  f(m)----(3) " /> <br>
 由(2)可以看出：<br>
 <img src="http://latex.codecogs.com/gif.latex? f(m-1)^{2}mod \ f(m)=(-1)^{m}" /><br>
 从而可以进一步简化(3),讨论:<br>
@@ -47,7 +47,7 @@
 ##2.<img src="http://latex.codecogs.com/gif.latex?\sum_{i=1}^{n}f(i)=f(n&plus;2)-1" />
 把每一项展开成<img src="http://latex.codecogs.com/gif.latex?f(i)=f(i&plus;1)-f(i-1)" />即可得到<br>
 
-
+<a href="http://www.codecogs.com/eqnedit.php?latex=a\%b" target="_blank"><img src="http://latex.codecogs.com/gif.latex?a\%b" title="a\%b" /></a>
 
 
 
