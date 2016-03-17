@@ -48,7 +48,10 @@
 把每一项展开成<img src="http://latex.codecogs.com/gif.latex?f(i)=f(i&plus;1)-f(i-1)" />即可得到<br>
 <img src="http://latex.codecogs.com/gif.latex?\frac{\partial J}{\partial \theta_k^{(j)}}=\sum_{i:r(i,j)=1}{\big((\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\big)x_k^{(i)}}+\lambda \theta_k^{(j)}" />
 <img src="http://latex.codecogs.com/gif.latex?\[\sum_{i}^{n}\]" />
-![alt](http://www.sciweavers.org/tex2img.php?eq= \sqrt[4]{23} &bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0)
+![alt](http://www.sciweavers.org/tex2img.php?eq= \sqrt[4]{23} &bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0)<br>
+<img src="http://latex.codecogs.com/gif.latex? \int" />
+
+
 
 
 
