@@ -31,7 +31,7 @@ void get_exnxt () {
 			int j = max(0,p-i+1) ;
 			while (i+j<lens && s[j]==s[i+j]) j ++ ;
 			exnxt[i] = j ;
-			a = i , j = exnxt[i]+i-1 ;
+			a = i , p = exnxt[i]+i-1 ;
 		}
 		else 
 			exnxt[i] = exnxt[i-a] ;
