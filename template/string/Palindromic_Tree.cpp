@@ -52,7 +52,7 @@ struct Palindromic {
 	void Insert () {
 		int last=0 ;
 		for (; s[sL] ; sL++) {
-			int x = s[sL]-'0' ;
+			int x = s[sL]-'a' ;
 			int cur = get_fail (last) ;
 			if (go[cur][x]!=-1) {
 				int now = newnode(len[cur]+2) ;
