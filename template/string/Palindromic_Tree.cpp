@@ -65,6 +65,6 @@ struct Palindromic {
 		}
 
 		for (int i=p-1 ; i>=0 ; i--) 
-			cnt[fail[i]] += cnt[i] ;
+			pal[fail[i]] += pal[i] ;
 	}
 } ;
