@@ -67,4 +67,11 @@ struct Palindromic {
 		for (int i=p-1 ; i>=0 ; i--) 
 			pal[fail[i]] += pal[i] ;
 	}
-} ;
+} pt;
+
+int main () {
+	pt.init () ;
+	scanf ("%s" , pt.s+1) ;
+	pt.Insert () ;
+	return 0 ;
+}
