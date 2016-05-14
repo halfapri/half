@@ -21,7 +21,6 @@ int sign(double x){return x<-eps?-1:x>eps;}
 
 const int M = (int)1e4+10 ;
 int dp[101][M],a[101][M],n,m,X,T ;
-
 struct NODE {
 	int id,val ;
 	NODE (int _id=0,int _val=0):id(_id),val(_val){}
