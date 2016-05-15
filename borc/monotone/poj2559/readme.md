@@ -1,4 +1,4 @@
-$poj2559 Largest Rectangle in a Histogram
+#poj2559 Largest Rectangle in a Histogram
 >给出一幅柱形图，告诉你每个柱子的高度 h(i) (~1e9) , 和柱子的数量 n(~1e5) ;<br>
 >每个柱子的下底长度为 1 ;<br>
 >求这张柱形图能放下的矩形的最大面积；<br>
