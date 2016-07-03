@@ -47,6 +47,6 @@ func SetTitle()
 	let l = l + 1 | call setline(l, 'const double eps = 1e-9 ;')
 	let l = l + 1 | call setline(l, 'const int inf = 0x3f3f3f3f ;')
 	let l = l + 1 | call setline(l, 'const ll INF = (ll)4e18 ;')
-	let l = l + 1 | call setline(l, 'const int MOD = (int)1e9+7 , BAS = 257 ;')
+	let l = l + 1 | call setline(l, 'const int MOD=(int)1e9+7,BAS=257,invBAS=70038911;')
 	let l = l + 1 | call setline(l, 'int sign(double x){return x<-eps?-1:x>eps;}')
 endfunc
