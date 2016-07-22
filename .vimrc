@@ -3,7 +3,7 @@ filetype indent plugin on
 set nu
 set tabstop=4
 set shiftwidth=4
-colo morning
+colo solarized
 set cin
 set mouse=a
 
@@ -44,6 +44,8 @@ func SetTitle()
 	let l = l + 1 | call setline(l, '#define rson (o<<1|1),mid+1,r')
 	let l = l + 1 | call setline(l, '#define MP make_pair')
 	let l = l + 1 | call setline(l, '#define sqr(x) ((x)*(x))')
+	let l = l + 1 | call setline(l, '#define ALL(v) (v).begin(),(v).end()')
+	let l = l + 1 | call setline(l, '#define showtime fprintf(stderr,"time = %.15f\n",clock() / (double)CLOCKS_PER_SEC)')
 	let l = l + 1 | call setline(l, 'const double eps = 1e-9 ;')
 	let l = l + 1 | call setline(l, 'const int inf = 0x3f3f3f3f ;')
 	let l = l + 1 | call setline(l, 'const ll INF = (ll)4e18 ;')
