@@ -3,7 +3,7 @@ filetype indent plugin on
 set nu
 set tabstop=4
 set shiftwidth=4
-colo solarized
+colo morning
 set cin
 set mouse=a
 
