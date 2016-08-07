@@ -39,7 +39,7 @@ char s[M] ;
 int sa[M],rk[M],height[M];
 
 void da (const char *s,int n,int m=256) {
-	int t1[M],t2[M],c[M];
+	static int t1[M],t2[M],c[M];
 	int *x=t1,*y=t2,i,j,k,p=1;
 	memset (c,0,4*m) ;
 	for (i=0; i<n; i++) c[x[i]=s[i]] ++ ;
