@@ -60,8 +60,7 @@ void da (const char *s,int n,int m=256) {
 	for (i=0,k=0; i<n-1; i++) {
 		j = sa[rk[i]-1] ;
 		while (s[i+k] == s[j+k]) k++ ;
-		height[rk[i]] = k ;
-		if (k) k -- ;
+		height[rk[i]] = k ? k-- : k;
 	}
 }
 
