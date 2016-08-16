@@ -3,7 +3,7 @@ filetype indent plugin on
 set nu
 set tabstop=4
 set shiftwidth=4
-colo morning
+colo slate
 set cin
 set mouse=a
 
@@ -52,5 +52,10 @@ func SetTitle()
 	let l = l + 1 | call setline(l, 'const int inf = 0x3f3f3f3f ;')
 	let l = l + 1 | call setline(l, 'const ll INF = (ll)4e18 ;')
 	let l = l + 1 | call setline(l, 'const int MOD=(int)1e9+7,BAS=257,invBAS=70038911;')
-	let l = l + 1 | call setline(l, 'int sign(double x){return x<-eps?-1:x>eps;}')
+	let l = l + 1 | call setline(l, 'inline int sign(double x){return x<-eps?-1:x>eps;}')
+	let l = l + 1 | call setline(l, 'inline int clz(int x){return __builtin_clz(x);}')
+	let l = l + 1 | call setline(l, 'inline int clz(ll x){return __builtin_clzll(x);}')
+	let l = l + 1 | call setline(l, 'inline int lg2(int x){return !x ? -1 : 31-clz(x);}')
+	let l = l + 1 | call setline(l, 'inline int lg2(ll x){return !x ? -1 : 63-clz(x);}')
 endfunc
+
