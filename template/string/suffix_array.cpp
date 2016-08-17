@@ -32,23 +32,27 @@ const double eps = 1e-9 ;
 const int inf = 0x3f3f3f3f ;
 const ll INF = (ll)4e18 ;
 const int MOD=(int)1e9+7,BAS=257,invBAS=70038911;
-int sign(double x){return x<-eps?-1:x>eps;}
+inline int sign(double x){return x<-eps?-1:x>eps;}
+inline int clz(int x){return __builtin_clz(x);}
+inline int clz(ll x){return __builtin_clzll(x);}
+inline int lg2(int x){return !x ? -1 : 31-clz(x);}
+inline int lg2(ll x){return !x ? -1 : 63-clz(x);}
 
 const int M = 100000+10 ;
 char s[M] ;
-int sa[M],rk[M],height[M];
+int sa[M],rk[M],height[M],st[18][M];
 
 void da (const char *s,int n,int m=256) {
 	static int t1[M],t2[M],c[M];
 	int *x=t1,*y=t2,i,j,k,p=1;
-	memset (c,0,4*m) ;
+	memset (c,0,sizeof(c[0])*m) ;
 	for (i=0; i<n; i++) c[x[i]=s[i]] ++ ;
 	for (i=1; i<m; i++) c[i] += c[i-1] ;
 	for (i=n-1; i>=0; i--) sa[--c[x[i]]] = x[i] ;
 	for (k=1; p<n; k<<=1, m=p) {
 		for (p=0, i=n-k; i<n; i++) y[p++] = i ;
 		for (i=0; i<n; i++) if (sa[i]>=k) y[p++] = sa[i]-k ;
-		memset (c,0,4*m) ;
+		memset (c,0,sizeof(c[0])*m) ;
 		for (i=0; i<n; i++) c[x[i]] ++ ;
 		for (i=1; i<m; i++) c[i] += c[i-1] ;
 		for (i=n-1; i>=0; i--) sa[--c[x[y[i]]]] = y[i] ;
@@ -56,12 +60,21 @@ void da (const char *s,int n,int m=256) {
 			x[sa[i]] = y[sa[i]] == y[sa[i]-1] &&
 				y[sa[i]+k] == y[sa[i-1]+k] ? p-1 : p++ ;
 	}
-	memcpy (rk,x,4*n) ;
-	for (i=0,k=0; i<n-1; i++) {
-		j = sa[rk[i]-1] ;
-		while (s[i+k] == s[j+k]) k++ ;
-		height[rk[i]] = k ? k-- : k;
-	}
+	memcpy (rk,x,sizeof(x[0])*n) ;
+	for (i=0, k=0; i<n-1; height[rk[i++]] = k?k-1:k++) 
+		for (j=sa[rk[i]-1]; s[j+k] == s[i+k]; k++);
+	memcpy (st[0], height, sizeof(height[0])*n);
+	for (k=1; 1<<k <= n; k++)
+		for (i=0; i+(1<<k)-1<n; i++)
+			st[k][i] = min(st[k-1][i], st[k-1][i+(1<<k-1)]);
+}
+
+int lcp (int i, int j) {
+	i = rk[i], j = rk[j];
+	if (i>j) swap(i, j);
+	i ++;
+	int f = lg2 (j-i+1);
+	return min (st[f][i], st[f][j-(1<<f)+1]);
 }
 
 int main () {
