@@ -69,7 +69,7 @@ void da (const char *s,int n,int m=256) {
 			st[k][i] = min(st[k-1][i], st[k-1][i+(1<<k-1)]);
 }
 
-int lcp (int i, int j) {
+int getlcp (int i, int j) {
 	i = rk[i], j = rk[j];
 	if (i>j) swap(i, j);
 	i ++;
