@@ -6,6 +6,8 @@ set shiftwidth=4
 colo slate
 set cin
 set mouse=a
+set hlsearch
+"把光标移动到要查找词上，按*或#进行查找，这个命令可以把所有符合的词都高亮显示.如果要让高亮消失,使用命令:nohl
 
 map <F4> :!g++ -std=c++11 -w -O2 % -o %<<cr>
 "map <F5> :!%<<cr> //windows上
