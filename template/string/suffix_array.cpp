@@ -38,6 +38,7 @@ inline int clz(ll x){return __builtin_clzll(x);}
 inline int lg2(int x){return !x ? -1 : 31-clz(x);}
 inline int lg2(ll x){return !x ? -1 : 63-clz(x);}
 
+//实践证明，岛娘的lg2()灰常好用。我在网上查看了关于优化ST询问的算法的方法，因为ST虽说是O(1)回答的，但常数有点大，怎么办呢？因为sa能做的题目数据量一般就1e6这样，所以我们完全可以开一个lg[]数组，lg[x]=lg2(x)，这样询问时直接在lg[]进行，这样就能把常数大大减小了。
 const int M = 100000+10 ;
 char s[M] ;
 int sa[M],rk[M],height[M],st[18][M];
