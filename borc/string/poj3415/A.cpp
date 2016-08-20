@@ -99,7 +99,7 @@ int main () {
 		scanf ("%s", s+m+1);
 		n = strlen (s);
 		da (s, n+1, 128);
-		printf (LLD"\n", solve(0) + solve(1));
+		printf (LLD"\n", solve(0)+solve(1));
 	}
 	return 0;
 }
