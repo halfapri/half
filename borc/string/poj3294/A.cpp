@@ -39,7 +39,7 @@ inline int lg2(int x){return !x ? -1 : 31-clz(x);}
 inline int lg2(ll x){return !x ? -1 : 63-clz(x);}
 
 const int M = 100000+110;
-int sa[M], h[M], rk[M], st[18][M], n;
+int sa[M], h[M], rk[M], n;
 vector<int> len;
 char s[M];
 int is[M];
@@ -65,15 +65,6 @@ void da (int *s,int n,int m) {
 	memcpy (rk, x, sizeof(x[0])*n);
 	for (i=0, k=0; i<n-1; h[rk[i++]] = k?k--:k)
 		for (j=sa[rk[i]-1]; s[i+k] == s[j+k]; k++);
-	memcpy (st[0], h, sizeof(h[0])*n);
-	for (k=1; 1<<k<=n; k++)
-		for (i=0; i+(1<<k)-1<n; i++)
-			st[k][i] = min (st[k-1][i], st[k-1][i+(1<<k-1)]);
-}
-
-int getlcp (int i,int j) {
-	int f = lg2(j-i+1);
-	return min (st[f][i], st[f][j-(1<<f)+1]);
 }
 
 int getss (int x) {
@@ -89,7 +80,7 @@ bool judge (int x) {
 		sz ++;
 		int f = getss(sa[i]);
 		if (ss[f] ++==0) cnt ++;
-		while (sz>1 && getlcp(l+1,i)<x) {
+		while (sz>1 && h[i]<x) {
 			f = getss(sa[l]);
 			if (-- ss[f]==0) cnt --;
 			l++, sz--;
@@ -121,7 +112,7 @@ void solve () {
 		sz ++;
 		int f = getss (sa[i]);
 		if (ss[f]++==0) cnt ++;
-		while (sz>1 && getlcp(l+1,i)<ret) {
+		while (sz>1 && h[i]<ret) {
 			f = getss (sa[l]);
 			if (--ss[f]==0) cnt --;
 			l++, sz--;
