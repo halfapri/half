@@ -82,12 +82,12 @@ void update (pair<int,int> &x) {
 }
 
 bool judge (int x) {
-	auto work = [](pair<int,int> *ss,int x) {
+	pair<int,int> ss[20];
+	auto work = [&]() {
 		for (int i=1; i<=n; i++) if (ss[i].se-ss[i].fi<x) return false ; 
 		return true;
 	};
 //////////////////////////////////////////////////////////////////
-	pair<int,int> ss[20];
 	for (int i=0; i<=n; i++) update (ss[i]);
 	update (ss[getss(sa[1])], sa[1]); 
 	int sz=1,cnt=0;
@@ -98,7 +98,7 @@ bool judge (int x) {
 			sz = 1;
 		}
 		update (ss[getss(sa[i])], sa[i]);
-		if (sz>1 && work (ss,x)) return true;
+		if (sz>1 && work ()) return true;
 	}
 	return false;
 }
