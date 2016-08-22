@@ -1,0 +1,8 @@
+2
+3
+ABCD
+BCDEF
+BRCD
+2
+rose
+orchild
