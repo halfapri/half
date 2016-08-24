@@ -1,0 +1,8 @@
+3
+aabbaabb
+abbababb
+bbbbbabb
+2
+xyz
+abc
+0
