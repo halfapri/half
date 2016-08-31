@@ -69,7 +69,7 @@ struct PERSIST {
 		if (k > T[pr]-T[pl]) { 
 			k -= T[pr]-T[pl]; return -1;
 		}
-		if (l == r) return k==1 ? l : -1;
+		if (l == r) return l;
 		int mid = l+r>>1;
 		int ret = ask(l,mid,ls[pl],ls[pr],k);
 		if (~ret) return ret;
