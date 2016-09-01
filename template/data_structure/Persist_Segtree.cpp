@@ -39,7 +39,7 @@ inline int lg2(int x){return !x ? -1 : 31-clz(x);}
 inline int lg2(ll x){return !x ? -1 : 63-clz(x);}
 
 const int M = 100000+10;
-int rs[M*22], ls[M*22], rt[M*22];
+int rs[M*22], ls[M*22], rt[M];
 
 struct PERSIST {
 	int T[M*22], n;
