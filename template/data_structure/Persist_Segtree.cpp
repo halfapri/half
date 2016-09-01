@@ -52,18 +52,13 @@ struct PERSIST {
 		build (ls[o], l, mid); 
 		build (rs[o], mid+1, r);
 	}
-	void ins (int o,int l,int r,int k) {
-		int cur = n-1;
+	void ins (int o,int l,int r,int cur,int k) {
 		T[cur] = T[o] + 1;
+		ls[cur] = ls[o], rs[cur] = rs[o];
 		if (l == r) return;
 		int mid = l+r>>1;
-		if (k <= mid) {
-			ls[cur] = newnode(), rs[cur] = rs[o];
-			ins (ls[o],l,mid,k);
-		} else {
-			ls[cur] = ls[o], rs[cur] = newnode();
-			ins (rs[o],mid+1,r,k);
-		}
+		if (k <= mid)  ins (ls[o],l,mid,ls[cur]=newnode(),k);
+		else ins (rs[o],mid+1,r,rs[cur]=newnode(),k);
 	}
 	int ask (int l,int r,int pl,int pr,int &k) {
 		if (k > T[pr]-T[pl]) { 
@@ -100,8 +95,7 @@ int main () {
 		ss.done ();
 		sgt.build (rt[0]=sgt.init(),0,ss.size()-1);
 		for (int i=1; i<=n; i++) {
-			rt[i] = sgt.newnode();
-			sgt.ins (rt[i-1],0,ss.size()-1,ss.get(a[i]));
+			sgt.ins(rt[i-1],0,ss.size()-1,rt[i]=sgt.newnode(),ss.get(a[i]));
 		}
 		while (m --) {int i,j,k;
 			scanf ("%d%d%d", &i, &j, &k); 
