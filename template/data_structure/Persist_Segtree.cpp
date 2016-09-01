@@ -48,9 +48,8 @@ struct PERSIST {
 	void build (int o,int l,int r) {
 		if (l == r) return;
 		int mid = l+r>>1;
-		ls[o] = newnode(), rs[o] = newnode();
-		build (ls[o], l, mid); 
-		build (rs[o], mid+1, r);
+		build (ls[o]=newnode(), l, mid); 
+		build (rs[o]=newnode(), mid+1, r);
 	}
 	void ins (int o,int l,int r,int cur,int k) {
 		T[cur] = T[o] + 1;
