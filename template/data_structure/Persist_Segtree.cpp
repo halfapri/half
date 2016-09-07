@@ -39,68 +39,63 @@ inline int lg2(int x){return !x ? -1 : 31-clz(x);}
 inline int lg2(ll x){return !x ? -1 : 63-clz(x);}
 
 const int M = 100000+10;
-int rs[M*22], ls[M*22], rt[M];
+int rs[M*22], ls[M*22], T[M*22], rt[M];
 
 struct PERSIST {
-	int T[M*22], n;
-	inline int init () { n = 0; return newnode(); }
-	inline int newnode () { T[n] = 0; return n++; }
+	int sz;
+	int init () {sz=0;return alloc(0);}
+	inline int alloc (int o) {
+		ls[sz] = ls[o], rs[sz] = rs[o], T[sz] = T[o];
+		return sz ++;
+	}
 	void build (int o,int l,int r) {
+		T[o] = 0;
 		if (l == r) return;
 		int mid = l+r>>1;
-		build (ls[o]=newnode(), l, mid); 
-		build (rs[o]=newnode(), mid+1, r);
+		build (ls[o]=alloc(0),l,mid);
+		build (rs[o]=alloc(0),mid+1,r);
 	}
-	void ins (int o,int l,int r,int cur,int k) {
-		T[cur] = T[o] + 1;
-		ls[cur] = ls[o], rs[cur] = rs[o];
-		if (l == r) return;
+	void ins (int o,int l,int r,int u,int x) {
+		if (l == r) {T[u] ++; return;}
 		int mid = l+r>>1;
-		if (k <= mid)  ins (ls[o],l,mid,ls[cur]=newnode(),k);
-		else ins (rs[o],mid+1,r,rs[cur]=newnode(),k);
+		if (x<=mid) ins (ls[o],l,mid,ls[u]=alloc(ls[o]),x);
+		else ins (rs[o],mid+1,r,rs[u]=alloc(rs[o]),x);
+		T[u] = T[ls[u]] + T[rs[u]];
 	}
-	int ask (int l,int r,int pl,int pr,int &k) {
-		if (k > T[pr]-T[pl]) { 
-			k -= T[pr]-T[pl]; return -1;
-		}
+	int ask (int o,int u,int l,int r,int &k) {
+		if (k>T[u]-T[o]) {k-=T[u]-T[o];return -1;}
 		if (l == r) return l;
 		int mid = l+r>>1;
-		int ret = ask(l,mid,ls[pl],ls[pr],k);
+		int ret = ask (ls[o],ls[u],l,mid,k);
 		if (~ret) return ret;
-		return ask (mid+1,r,rs[pl],rs[pr],k);
+		return ask (rs[o],rs[u],mid+1,r,k);
 	}
 } sgt;
 
-struct VC:vector<int> {
-	void done () {
-		sort (begin(),end());
-		erase (unique(begin(),end()),end());
-	}
-	int get (int x) {
-		return lower_bound (begin(),end(),x) - begin();
-	}
-} ss;
+int ss[M], sz, n, m, a[M];
 
-int n, m;
-int a[M];
+int get (int x) {
+	return lower_bound (ss, ss+sz, x) - ss;
+}
 
 int main () {
-	while (~ scanf ("%d%d", &n, &m)) {
-		ss.resize (n);
-		for (int i=1; i<=n; i++) {
-			scanf ("%d", &a[i]);
-			ss[i-1] = a[i];
-		}
-		ss.done ();
-		sgt.build (rt[0]=sgt.init(),0,ss.size()-1);
-		for (int i=1; i<=n; i++) {
-			sgt.ins(rt[i-1],0,ss.size()-1,rt[i]=sgt.newnode(),ss.get(a[i]));
-		}
-		while (m --) {int i,j,k;
-			scanf ("%d%d%d", &i, &j, &k); 
-			int x = sgt.ask(0,ss.size()-1,rt[i-1],rt[j],k);
-			printf ("%d\n", ss[x]);
-		}
+	sz = 0;
+	ss[sz ++] = -inf;
+	for (int i=1; i<=n; i++) {
+		scanf ("%d", a+i);
+		ss[sz ++] = a[i];
+	}
+	sort (ss, ss+sz);
+	sz = unique (ss, ss+sz) - ss;
+	sgt.build (rt[0]=sgt.init(),0,sz-1);
+	for (int i=1; i<=n; i++) 
+		sgt.ins (rt[i-1],0,sz-1,rt[i]=sgt.alloc(rt[i-1]),get(a[i]));
+//////////////////////////////////////////////////////////////////
+	scanf ("%d", &m);
+	while (m --) {int l, r, k;
+		scanf ("%d%d%d", &l, &r, &k);
+		int ans = sgt.ask (rt[l-1],rt[r],0,sz-1,k);
+		printf ("%d\n", ss[ans]);
 	}
 	return 0;
 }
