@@ -70,7 +70,7 @@ struct PERSIST {
 		if (~ret) return ret;
 		return ask (rs[o],rs[u],mid+1,r,k);
 	}
-} sgt;
+} pst;
 
 int ss[M], sz, n, m, a[M];
 
@@ -87,14 +87,14 @@ int main () {
 	}
 	sort (ss, ss+sz);
 	sz = unique (ss, ss+sz) - ss;
-	sgt.build (rt[0]=sgt.init(),0,sz-1);
+	pst.build (rt[0]=pst.init(),0,sz-1);
 	for (int i=1; i<=n; i++) 
-		sgt.ins (rt[i-1],0,sz-1,rt[i]=sgt.alloc(rt[i-1]),get(a[i]));
+		pst.ins (rt[i-1],0,sz-1,rt[i]=pst.alloc(rt[i-1]),get(a[i]));
 //////////////////////////////////////////////////////////////////
 	scanf ("%d", &m);
 	while (m --) {int l, r, k;
 		scanf ("%d%d%d", &l, &r, &k);
-		int ans = sgt.ask (rt[l-1],rt[r],0,sz-1,k);
+		int ans = pst.ask (rt[l-1],rt[r],0,sz-1,k);
 		printf ("%d\n", ss[ans]);
 	}
 	return 0;
