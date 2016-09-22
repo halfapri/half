@@ -21,6 +21,7 @@ map <F2> :call SetTitle()<CR>
 func SetTitle()
 	let l = 0
 	let l = l + 1 | call setline(l, '#include <stdio.h>')
+	let l = l + 1 | call setline(l, '#include <time.h>')
 	let l = l + 1 | call setline(l, '#include <bitset>')
 	let l = l + 1 | call setline(l, '#include <string.h>')
 	let l = l + 1 | call setline(l, '#include <stack>')

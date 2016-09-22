@@ -18,7 +18,7 @@ typedef unsigned long long ull ;
 #ifdef _WIN32
 #define LLD "%I64d"
 #else
-#define LLD "%lld
+#define LLD "%lld"
 #endif
 #define pi (acos(-1.0))
 #define fi first
