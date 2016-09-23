@@ -1,0 +1,17 @@
+5 14 4 5
+1 2 3 4 5
+move 2
+move 2
+move 2
+add 1
+move 2
+query
+move 2
+query
+move 2
+query
+move 2
+query
+move 2
+query
+0 0 0 0
