@@ -58,7 +58,7 @@ void da (const char *s,int n,int m=256) {
 		for (i=1; i<m; i++) c[i] += c[i-1] ;
 		for (i=n-1; i>=0; i--) sa[--c[x[y[i]]]] = y[i] ;
 		for (swap(x,y), x[sa[0]]=0, p=1, i=1; i<n; i++)
-			x[sa[i]] = y[sa[i]] == y[sa[i]-1] &&
+			x[sa[i]] = y[sa[i]] == y[sa[i-1]] &&
 				y[sa[i]+k] == y[sa[i-1]+k] ? p-1 : p++ ;
 	}
 	memcpy (rk,x,sizeof(x[0])*n) ;
