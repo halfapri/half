@@ -110,8 +110,8 @@ struct Segtree {
 	}
 #undef mid
 } sgt;
-
 //////////////////////////////////////////////////////////////////
+
 int del[M], n, Q, I, DEL;
 
 ll solve () {
