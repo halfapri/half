@@ -113,7 +113,6 @@ struct Segtree {
 //////////////////////////////////////////////////////////////////
 
 int del[M], n, Q, I, DEL;
-
 ll solve () {
 	int beg = I;
 	int l = tin[del[beg]];
