@@ -1,0 +1,113 @@
+#include <stdio.h>
+#include <time.h>
+#include <bitset>
+#include <string.h>
+#include <stack>
+#include <algorithm>
+#include <iostream>
+#include <set>
+#include <map>
+#include <math.h>
+#include <queue>
+#include <complex>
+#include <functional>
+using namespace std ;
+typedef long long ll ;
+typedef long double ld ;
+typedef unsigned long long ull ;
+#ifdef _WIN32
+#define LLD "%I64d"
+#else
+#define LLD "%lld"
+#endif
+#define pi (acos(-1.0))
+#define fi first
+#define se second
+#define lson (o<<1),l,mid
+#define rson (o<<1|1),mid+1,r
+#define MP make_pair
+#define sqr(x) ((x)*(x))
+#define ALL(v) (v).begin(),(v).end()
+#define showtime fprintf(stderr,"time = %.15f\n",clock() / (double)CLOCKS_PER_SEC)
+const double eps = 1e-9 ;
+const int inf = 0x3f3f3f3f ;
+const ll INF = (ll)4e18 ;
+const int MOD=91250681,BAS=257;
+inline int sign(double x){return x<-eps?-1:x>eps;}
+inline int clz(int x){return __builtin_clz(x);}
+inline int clz(ll x){return __builtin_clzll(x);}
+inline int lg2(int x){return !x ? -1 : 31-clz(x);}
+inline int lg2(ll x){return !x ? -1 : 63-clz(x);}
+
+const int M = 205;
+struct Node {
+	int v;
+	Node *l, *r, *u, *d;
+} T[M][M], *col[M], *row[M];
+int n, Q;
+
+int main () {
+	freopen ("read.txt", "r", stdin);
+	scanf ("%d%d", &n, &Q);
+	for (int i=0; i<n; i++) 
+		for (int j=0; j<n; j++) {
+			T[i][j].v = i*n+j;
+			T[i][j].l = &T[i][(j-1+n)%n];
+			T[i][j].r = &T[i][(j+1+n)%n];
+			T[i][j].u = &T[(i-1+n)%n][j];
+			T[i][j].d = &T[(i+1+n)%n][j];
+		}
+	for (int i=0; i<n; i++) col[i] = &T[0][i], row[i] = &T[i][0];
+	while (Q --) {int t,l,r,d;
+		scanf ("%d%d%d%d", &t, &l, &r, &d);
+		if (t == 2) {
+			Node *I = col[l], *D;
+			for (int i=0; i<d; i++) I = I->d;
+			for (int i=l; i<=r; i++, I=I->r) col[i] = I;
+			I = col[l];
+			D = col[(l-1+n)%n];
+			for (int i=0; i<n; i++, I=I->d) {
+				D->r = I;
+				I->l = D;
+			}
+			I = col[r];
+			D = col[(r+1)%n];
+			for (int i=0; i<n; i++, I=I->d) {
+				D->l = I;
+				I->r = D;
+			}
+			if (l == 0) {
+				I = col[0];
+				for (int i=0; i<n; i++, I=I->d) row[i] = I;
+			}
+		} else {
+			Node *I = row[l], *D;
+			for (int i=0; i<d; i++) I=I->r;
+			for (int i=l; i<=r; i++, I=I->d) row[i] = I;
+			int x = (l-1+n)%n;
+			I = row[l];
+			for (int i=0; i<n; i++, I=I->r) {
+				T[x][i].d = I;
+				I->u = &T[x][i];
+			}
+			D = row[(r+1)%n];
+			I = row[r];
+			for (int i=0; i<n; i++, I=I->r) {
+				T[x][i].u = I;
+				I->d = &T[x][i];
+			}
+			if (l == 0) {
+				I = row[0];
+				for (int i=0; i<n; i++, I=I->r) col[i] = I;
+			}
+		}
+		for (int i=0; i<n; i++) {
+			Node *I = row[i];
+			for (int j=0; j<n; j++, I=I->r) {
+				printf ("v=%d,l=%d,r=%d,u=%d,d=%d\n",I->v,
+						I->l->v,I->r->v,I->u->v,I->d->v);
+			}
+		} puts ("");
+	}
+	return 0;
+}
