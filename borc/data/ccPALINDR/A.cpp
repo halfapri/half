@@ -44,17 +44,18 @@ char s[M];
 unsigned fix[M];
 int fact[M];
 int ls[M], rs[M], rt;
+
 struct Node {
 	int sz;
 	unsigned fix;
-	int sum[10], ans;
+	int sum[10];
 	char ch;
 	bool mk;
 	inline void init (char _ch) {
 		sz=1, fix=rand();
-		memset(sum,0,sizeof(sum)), sum[ch=_ch-'a']++, ans=1, mk=0;
+		memset(sum,0,sizeof(sum)), sum[ch=_ch-'a']++, mk=0;
 	}
-	int inv(int x) {
+	inline int inv(int x) {
 		if (x==0) return 1;
 		int ret=1;
 		for (int i=mod-2; i; i>>=1) {
@@ -63,15 +64,11 @@ struct Node {
 		}
 		return ret;
 	}
-	inline void up(Node &ls,Node &rs) {
-		memset (sum, 0, sizeof(sum));
-		sum[ch]++, ans=1;
-		sz = ls.sz+rs.sz+1;
-		int cnt=0, tot=0;
+	inline int getans () {
+		int cnt=0, tot=0, ans=1;
 		for (int i=0; i<10; i++) {
-			sum[i] += ls.sum[i] + rs.sum[i];
 			if (sum[i]&1) cnt ++;
-			ans = 1ll*ans*inv(sum[i]/2)%mod;
+			ans = 1ll*ans*inv(fact[sum[i]/2])%mod;
 			tot += sum[i];
 		}
 		if (tot & 1) {
@@ -81,6 +78,13 @@ struct Node {
 			if (cnt) ans=0;
 			else ans = 1ll*ans*fact[tot/2]%mod;
 		}
+		return ans;
+	}
+	inline void up(Node &ls,Node &rs) {
+		memset (sum, 0, sizeof(sum));
+		sum[ch]++;
+		sz = ls.sz+rs.sz+1;
+		for (int i=0; i<10; i++) sum[i]+=ls.sum[i]+rs.sum[i];
 	}
 	inline void mark (int o) {
 		mk^=1, swap(ls[o],rs[o]);
@@ -130,12 +134,7 @@ struct Treap {
 		int a,b,c;
 		cut (rt, a, b, l-1);
 		cut (b, b, c, r-l+1);
-		int ans = T[b].ans;
-		//printf ("l=%d,r=%d\n", l, r);
-		//Print (b);puts("");
-		//puts ("ask:");
-		//for (int i=0; i<10; i++) printf("%d ",T[b].sum[i]);
-		//puts ("");
+		int ans = T[b].getans();
 		merge (rt, a, b);
 		merge (rt, rt, c);
 		return ans;
@@ -162,7 +161,7 @@ int main () {
 	//freopen ("read.txt", "r", stdin);
 	srand(time(0));
 	for (int i=0; i<M; i++) fix[i] = rand();
-	sort (fix, fix+M, [](int a,int b) {
+	sort (fix, fix+M, [](unsigned a,unsigned b) {
 			return a>b;
 			});
 	fact[0]=1;
@@ -181,3 +180,4 @@ int main () {
 	}
 	return 0;
 }
+
