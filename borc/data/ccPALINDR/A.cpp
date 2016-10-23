@@ -158,7 +158,6 @@ struct Treap {
 int n, m;
 
 int main () {
-	//freopen ("read.txt", "r", stdin);
 	srand(time(0));
 	for (int i=0; i<M; i++) fix[i] = rand();
 	sort (fix, fix+M, [](unsigned a,unsigned b) {
