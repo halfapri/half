@@ -1,0 +1,14 @@
+13
+add 5 5
+add 5 6
+add 5 7
+add 6 5
+add 6 6
+add 6 7
+add 7 5
+add 7 6
+add 7 7
+find 6 6
+remove 7 7
+find 6 6
+find 4 4
