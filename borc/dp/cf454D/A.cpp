@@ -53,7 +53,7 @@ int get (int x,int ret=0) {
 }
 
 void init () {
-	for (int i=2 ; i<=60 ; i++) {
+	for (int i=2 ; i<60 ; i++) {
 		if (judge(i)) arr[as++] = i ;
 	}
 	for (int i=0 ; i<n ; i++) { 
@@ -62,7 +62,7 @@ void init () {
 			dp[i][j].val = inf ;
 		}
 	}
-	for (int i=1 ; i<=60 ; i++) {
+	for (int i=1 ; i<60 ; i++) {
 		sb[i] = get(i) ;
 		if(abs(i-a[0])<dp[0][sb[i]].val) {
 			dp[0][sb[i]].val = abs(i-a[0]) ;
@@ -82,15 +82,15 @@ int main () {
 	for (int i=0 ; i<n ; i++) scanf ("%d" , a+i) ;
 	init () ;
 	for (int i=1 ; i<n ; i++) {
-		for (int j=0 ; j<(1<<17) ; j++) {
-			if (dp[i-1][j].val==inf) continue ;
-			for (int z=1 ; z<=60 ; z++) {
-				if (j&sb[z]) continue ;
+		for (int z=1 ; z<60 ; z++) {
+			int x = (~sb[z]) & ((1<<17)-1) ;
+			for (int j=x ; ; j=(j-1)&x) {
 				if (dp[i][j|sb[z]].val > dp[i-1][j].val+abs(a[i]-z)) {
 					dp[i][j|sb[z]].val = dp[i-1][j].val+abs(a[i]-z) ;
 					dp[i][j|sb[z]].nxt = j ;
 					dp[i][j|sb[z]].x = z ;
 				}
+				if (j==0) break ;
 			}
 		}
 	}
